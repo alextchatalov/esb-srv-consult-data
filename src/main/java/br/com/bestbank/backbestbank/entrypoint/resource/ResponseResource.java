@@ -3,6 +3,8 @@ package br.com.bestbank.backbestbank.entrypoint.resource;
 import br.com.bestbank.backbestbank.core.GetAllBanksUseCase;
 import br.com.bestbank.backbestbank.core.model.Category;
 import br.com.bestbank.backbestbank.core.model.Root;
+import br.com.bestbank.backbestbank.entrypoint.mapper.RootToBankPersonalAccountsMapper;
+import br.com.bestbank.backbestbank.entrypoint.model.Bank;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +23,11 @@ public class ResponseResource {
     private final GetAllBanksUseCase getAllBanksUseCase;
 
     @GetMapping("/perssonal-accounts")
-    public List<Root> getPessonalAccounts() {
-        return getAllBanksUseCase.execute(Category.PERSONAL_ACCOUNTS);
+    public List<Bank> getPessonalAccounts() {
+
+        List<Root> root = getAllBanksUseCase.execute(Category.PERSONAL_ACCOUNTS);
+        List<Bank> banks = RootToBankPersonalAccountsMapper.convert(root);
+
+        return banks;
     }
 }
