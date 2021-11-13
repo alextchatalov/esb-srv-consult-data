@@ -12,12 +12,12 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "bestbank";
+        return "escolha_seu_banco";
     }
 
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/bestbank-db");
+        ConnectionString connectionString = new ConnectionString("mongodb+srv://escolha_seu_banco:yzKimAoN6W6Hm61q@cluster0.ymic8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();
