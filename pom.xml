@@ -8,10 +8,10 @@
 		<version>2.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.bestbank</groupId>
-	<artifactId>backbestbank</artifactId>
+	<groupId>br.com.consultdata</groupId>
+	<artifactId>consultdata</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>backbestbank</name>
+	<name>consultdata</name>
 	<description>Find the best bank for you</description>
 	<properties>
 		<java.version>11</java.version>
