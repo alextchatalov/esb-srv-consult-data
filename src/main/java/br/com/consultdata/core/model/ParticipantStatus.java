@@ -1,4 +1,4 @@
-package br.com.consultdata.core.model;
+package br.com.bestbank.getdataopenbanking.core.model;
 
 public enum ParticipantStatus {
 

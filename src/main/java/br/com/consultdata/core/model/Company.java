@@ -1,51 +1,31 @@
-package br.com.consultdata.core.model;
+package br.com.bestbank.getdataopenbanking.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldNameConstants;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@FieldNameConstants
+@EqualsAndHashCode
+@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Company {
-    @JsonProperty("name")
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    String name;
-
-    @JsonProperty("cnpjNumber")
-    public String getCnpjNumber() {
-        return this.cnpjNumber;
-    }
-
-    public void setCnpjNumber(String cnpjNumber) {
-        this.cnpjNumber = cnpjNumber;
-    }
-
-    String cnpjNumber;
-
-    @JsonProperty("urlComplementaryList")
-    public String getUrlComplementaryList() {
-        return this.urlComplementaryList;
-    }
-
-    public void setUrlComplementaryList(String urlComplementaryList) {
-        this.urlComplementaryList = urlComplementaryList;
-    }
-
-    String urlComplementaryList;
-
-    @JsonProperty("personalAccounts")
-    public List<PersonalAccount> getPersonalAccounts() {
-        return this.personalAccounts;
-    }
-
-    public void setPersonalAccounts(List<PersonalAccount> personalAccounts) {
-        this.personalAccounts = personalAccounts;
-    }
-
-    List<PersonalAccount> personalAccounts;
+    private String name;
+    private String cnpjNumber;
+    private String urlComplementaryList;
+    @JsonAlias("personalAccounts")
+    private List<PersonalAccount> personalAccounts;
+    @JsonAlias("businessAccounts")
+    private List<BusinessAccount> businessAccounts;
 }

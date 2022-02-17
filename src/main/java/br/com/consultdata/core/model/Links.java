@@ -1,24 +1,20 @@
-package br.com.consultdata.core.model;
+package br.com.bestbank.getdataopenbanking.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldNameConstants;
 
-public class Links{
-    @JsonProperty("self")
-    public String getSelf() {
-        return this.self; }
-    public void setSelf(String self) {
-        this.self = self; }
-    String self;
-    @JsonProperty("first")
-    public String getFirst() {
-        return this.first; }
-    public void setFirst(String first) {
-        this.first = first; }
-    String first;
-    @JsonProperty("last")
-    public String getLast() {
-        return this.last; }
-    public void setLast(String last) {
-        this.last = last; }
-    String last;
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@FieldNameConstants
+public class Links {
+    private String self;
+    private String first;
+    private String last;
+    private String prev;
+    private String next;
 }

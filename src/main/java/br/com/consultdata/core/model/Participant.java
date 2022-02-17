@@ -1,4 +1,4 @@
-package br.com.consultdata.core.model;
+package br.com.bestbank.getdataopenbanking.core.model;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

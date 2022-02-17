@@ -1,9 +1,14 @@
-package br.com.consultdata.core.model;
+package br.com.bestbank.getdataopenbanking.core.model;
 
+import br.com.bestbank.getdataopenbanking.exception.MapperException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +16,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @ToString
 @Builder
+@Slf4j
 public class Response {
 
     private Category category;
@@ -20,5 +26,17 @@ public class Response {
     private Participant participant;
     @EqualsAndHashCode.Exclude
     private LocalDateTime lastRequest;
+
+    public Root getObjectFromJsonResponse() {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+        try {
+            return objectMapper.readValue(this.response, Root.class);
+        } catch (final JsonProcessingException e) {
+            System.out.println(this.response);
+            log.error("Error to map json response to object: ", e);
+            throw new MapperException("Cannot get object from json response: " + e.getMessage());
+        }
+    }
 
 }
