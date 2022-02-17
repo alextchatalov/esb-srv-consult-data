@@ -1,24 +1,24 @@
-package br.com.bestbank.backbestbank.fixtures.resource;
+package br.com.consultdata.fixtures.resource;
 
-import br.com.bestbank.getdataopenbanking.core.model.Brand;
-import br.com.bestbank.getdataopenbanking.core.model.BusinessAccount;
-import br.com.bestbank.getdataopenbanking.core.model.Company;
-import br.com.bestbank.getdataopenbanking.core.model.Customers;
-import br.com.bestbank.getdataopenbanking.core.model.Data;
-import br.com.bestbank.getdataopenbanking.core.model.FeesBusinessAccounts;
-import br.com.bestbank.getdataopenbanking.core.model.FeesPersonalAccounts;
-import br.com.bestbank.getdataopenbanking.core.model.IncomeRate;
-import br.com.bestbank.getdataopenbanking.core.model.Maximum;
-import br.com.bestbank.getdataopenbanking.core.model.Minimum;
-import br.com.bestbank.getdataopenbanking.core.model.MinimumBalance;
-import br.com.bestbank.getdataopenbanking.core.model.OtherService;
-import br.com.bestbank.getdataopenbanking.core.model.PersonalAccount;
-import br.com.bestbank.getdataopenbanking.core.model.Price;
-import br.com.bestbank.getdataopenbanking.core.model.PriorityService;
-import br.com.bestbank.getdataopenbanking.core.model.ServiceBundle;
-import br.com.bestbank.getdataopenbanking.core.model.ServiceBusinessAccounts;
-import br.com.bestbank.getdataopenbanking.core.model.ServiceFromServiceBundle;
-import br.com.bestbank.getdataopenbanking.core.model.TermsConditions;
+import br.com.consultdata.core.model.Brand;
+import br.com.consultdata.core.model.BusinessAccount;
+import br.com.consultdata.core.model.Company;
+import br.com.consultdata.core.model.Customers;
+import br.com.consultdata.core.model.Data;
+import br.com.consultdata.core.model.FeesBusinessAccounts;
+import br.com.consultdata.core.model.FeesPersonalAccounts;
+import br.com.consultdata.core.model.IncomeRate;
+import br.com.consultdata.core.model.Maximum;
+import br.com.consultdata.core.model.Minimum;
+import br.com.consultdata.core.model.MinimumBalance;
+import br.com.consultdata.core.model.OtherService;
+import br.com.consultdata.core.model.PersonalAccount;
+import br.com.consultdata.core.model.Price;
+import br.com.consultdata.core.model.PriorityService;
+import br.com.consultdata.core.model.ServiceBundle;
+import br.com.consultdata.core.model.ServiceBusinessAccounts;
+import br.com.consultdata.core.model.ServiceFromServiceBundle;
+import br.com.consultdata.core.model.TermsConditions;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
@@ -57,7 +57,7 @@ public class DataFixture implements TemplateLoader {
 
         return Company.builder()
                 .name("test")
-                .cnpjNumber("1234444456")
+                .cnpjNumber("1244441")
                 .urlComplementaryList("test")
                 .personalAccounts(Collections.singletonList(createPersonalAccount()))
                 .businessAccounts(Collections.singletonList(createBusinessAccount()))
@@ -143,7 +143,7 @@ public class DataFixture implements TemplateLoader {
     private ServiceFromServiceBundle createService() {
 
         return ServiceFromServiceBundle.builder()
-                .code("test")
+                .code("123")
                 .chargingTriggerInfo("test")
                 .eventLimitQuantity("1")
                 .freeEventQuantity("1")

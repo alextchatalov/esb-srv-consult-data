@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class OtherServiceToOtherServiceEntityMapper implements Converter<OtherService, OtherServiceEntity> {
+public class OtherServiceEntityToOtherServiceMapper implements Converter<OtherServiceEntity, OtherService> {
 
     private final PriceEntityToPriceMapper priceEntityToPriceMapper;
     private final MinimumEntityToMinimumMapper minimumEntityToMinimumMapper;
@@ -26,18 +26,18 @@ public class OtherServiceToOtherServiceEntityMapper implements Converter<OtherSe
 
     @Override
     @NonNull
-    public OtherServiceEntity convert(final OtherService otherService) {
-        return OtherServiceEntity.builder()
+    public OtherService convert(final OtherServiceEntity otherService) {
+        return OtherService.builder()
                 .name(otherService.getName())
                 .code(otherService.getCode())
                 .chargingTriggerInfo(otherService.getChargingTriggerInfo())
-                .prices(convertListOfPricesToListOfPricesEntity(otherService.getPrices()))
+                .prices(convertListOfPricesEntityToListOfPrices(otherService.getPrices()))
                 .minimum(minimumEntityToMinimumMapper.convert(otherService.getMinimum()))
                 .maximum(maximumEntityToMaximumMapper.convert(otherService.getMaximum()))
                 .build();
     }
 
-    private List<PriceEntity> convertListOfPricesToListOfPricesEntity(final List<Price> prices) {
+    private List<Price> convertListOfPricesEntityToListOfPrices(final List<PriceEntity> prices) {
         return prices.stream().map(priceEntityToPriceMapper::convert).collect(Collectors.toList());
 
     }

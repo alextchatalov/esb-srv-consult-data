@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class PriorityServiceToPriorityServiceEntityMapper implements Converter<PriorityService, PriorityServiceEntity> {
+public class PriorityServiceEntityToPriorityServiceMapper implements Converter<PriorityServiceEntity, PriorityService> {
 
     private final PriceEntityToPriceMapper priceEntityToPriceMapper;
     private final MinimumEntityToMinimumMapper minimumEntityToMinimumMapper;
@@ -26,18 +26,18 @@ public class PriorityServiceToPriorityServiceEntityMapper implements Converter<P
 
     @Override
     @NonNull
-    public PriorityServiceEntity convert(final PriorityService priorityService) {
-        return PriorityServiceEntity.builder()
+    public PriorityService convert(final PriorityServiceEntity priorityService) {
+        return PriorityService.builder()
                 .name(priorityService.getName())
                 .code(priorityService.getCode())
                 .chargingTriggerInfo(priorityService.getChargingTriggerInfo())
-                .prices(convertListOfPricesToListOfPricesEntity(priorityService.getPrices()))
+                .prices(convertListOfPricesEntityToListOfPrices(priorityService.getPrices()))
                 .minimum(minimumEntityToMinimumMapper.convert(priorityService.getMinimum()))
                 .maximum(maximumEntityToMaximumMapper.convert(priorityService.getMaximum()))
                 .build();
     }
 
-    private List<PriceEntity> convertListOfPricesToListOfPricesEntity(final List<Price> prices) {
+    private List<Price> convertListOfPricesEntityToListOfPrices(final List<PriceEntity> prices) {
         return prices.stream().map(priceEntityToPriceMapper::convert).collect(Collectors.toList());
     }
 

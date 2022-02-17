@@ -1,18 +1,18 @@
-package br.com.bestbank.backbestbank.fixtures.resource;
+package br.com.consultdata.fixtures.resource;
 
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.CustomersEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.FeesEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.IncomeRateEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MaximumEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MinimumBalanceEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MinimumEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.OtherServiceEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.PersonalAccountEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.PriceEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.PriorityServiceEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.ServiceBundleEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.ServiceFromServiceBundleEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.TermsConditionsEntity;
+import br.com.consultdata.dataprovider.entity.CustomersEntity;
+import br.com.consultdata.dataprovider.entity.FeesPersonalAccountsEntity;
+import br.com.consultdata.dataprovider.entity.IncomeRateEntity;
+import br.com.consultdata.dataprovider.entity.MaximumEntity;
+import br.com.consultdata.dataprovider.entity.MinimumBalanceEntity;
+import br.com.consultdata.dataprovider.entity.MinimumEntity;
+import br.com.consultdata.dataprovider.entity.OtherServiceEntity;
+import br.com.consultdata.dataprovider.entity.PersonalAccountEntity;
+import br.com.consultdata.dataprovider.entity.PriceEntity;
+import br.com.consultdata.dataprovider.entity.PriorityServiceEntity;
+import br.com.consultdata.dataprovider.entity.ServiceBundleEntity;
+import br.com.consultdata.dataprovider.entity.ServiceFromServiceBundleEntity;
+import br.com.consultdata.dataprovider.entity.TermsConditionsEntity;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
@@ -81,9 +81,9 @@ public class PersonalAccountEntityFixture implements TemplateLoader {
                 .build();
     }
 
-    private FeesEntity createFees() {
+    private FeesPersonalAccountsEntity createFees() {
 
-        return FeesEntity.builder()
+        return FeesPersonalAccountsEntity.builder()
                 .priorityServices(Collections.singletonList(createPriorityService()))
                 .otherServices(Collections.singletonList(createOtherService()))
                 .build();

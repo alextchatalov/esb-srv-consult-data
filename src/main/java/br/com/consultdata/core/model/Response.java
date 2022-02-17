@@ -1,6 +1,6 @@
-package br.com.bestbank.getdataopenbanking.core.model;
+package br.com.consultdata.core.model;
 
-import br.com.bestbank.getdataopenbanking.exception.MapperException;
+import br.com.consultdata.exception.MapperException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

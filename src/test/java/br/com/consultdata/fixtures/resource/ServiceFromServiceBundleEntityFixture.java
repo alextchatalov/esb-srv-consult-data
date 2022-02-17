@@ -5,7 +5,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
-public class ServiceEntityFixture implements TemplateLoader {
+public class ServiceFromServiceBundleEntityFixture implements TemplateLoader {
 
     public static final String VALID = "valid";
 

@@ -1,7 +1,7 @@
-package br.com.bestbank.backbestbank.fixtures.resource;
+package br.com.consultdata.fixtures.resource;
 
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MinimumBalanceEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.TermsConditionsEntity;
+import br.com.consultdata.dataprovider.entity.MinimumBalanceEntity;
+import br.com.consultdata.dataprovider.entity.TermsConditionsEntity;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;

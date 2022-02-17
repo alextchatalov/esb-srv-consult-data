@@ -1,4 +1,4 @@
-package br.com.bestbank.backbestbank;
+package br.com.consultdata;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

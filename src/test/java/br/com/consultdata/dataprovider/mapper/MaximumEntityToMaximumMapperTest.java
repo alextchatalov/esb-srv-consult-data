@@ -1,10 +1,10 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.Maximum;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MaximumEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.MaximumEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.MaximumFixture;
+import br.com.consultdata.core.model.Maximum;
+import br.com.consultdata.dataprovider.entity.MaximumEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.MaximumEntityFixture;
+import br.com.consultdata.fixtures.resource.MaximumFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,11 +12,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @ExtendWith(SpringExtension.class)
-class MaximumToMaximumEntityMapperTest {
+class MaximumEntityToMaximumMapperTest {
 
     @InjectMocks
-    private MaximumToMaximumEntityMapper mapper;
+    private MaximumEntityToMaximumMapper mapper;
 
     @BeforeAll
     public static void setup() {
@@ -29,8 +31,8 @@ class MaximumToMaximumEntityMapperTest {
         final Maximum maximumMock = Fixture.from(Maximum.class).gimme(MaximumFixture.VALID);
         final MaximumEntity maximumEntityMock = Fixture.from(MaximumEntity.class).gimme(MaximumEntityFixture.VALID);
 
-        final MaximumEntity maximumEntity = mapper.convert(maximumMock);
+        final Maximum maximum = mapper.convert(maximumEntityMock);
 
-        assertThat(maximumEntity).isEqualTo(maximumEntityMock);
+        assertThat(maximum).isEqualTo(maximumMock);
     }
 }

@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 @AllArgsConstructor
-public class MinimumToMinimumEntityMapper implements Converter<Minimum, MinimumEntity> {
+public class MinimumEntityToMinimumMapper implements Converter<MinimumEntity, Minimum> {
 
     @Override
     @NonNull
-    public MinimumEntity convert(final Minimum minimum) {
-        return MinimumEntity.builder()
+    public Minimum convert(final MinimumEntity minimum) {
+        return Minimum.builder()
                 .value(minimum.getValue())
                 .currency(minimum.getCurrency())
                 .build();

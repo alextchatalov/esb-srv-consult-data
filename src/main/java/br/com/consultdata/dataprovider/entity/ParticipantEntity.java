@@ -1,6 +1,6 @@
-package br.com.bestbank.getdataopenbanking.dataprovider.entity;
+package br.com.consultdata.dataprovider.entity;
 
-import br.com.bestbank.getdataopenbanking.core.model.ParticipantStatus;
+import br.com.consultdata.core.model.ParticipantStatus;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

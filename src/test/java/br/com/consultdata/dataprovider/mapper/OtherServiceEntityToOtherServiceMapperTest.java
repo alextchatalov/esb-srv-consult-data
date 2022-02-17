@@ -1,19 +1,19 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.Maximum;
-import br.com.bestbank.getdataopenbanking.core.model.Minimum;
-import br.com.bestbank.getdataopenbanking.core.model.OtherService;
-import br.com.bestbank.getdataopenbanking.core.model.Price;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MaximumEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MinimumEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.OtherServiceEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.PriceEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.MaximumEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.MinimumEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.OtherServiceEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.OtherServiceFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.PriceEntityFixture;
+import br.com.consultdata.core.model.Maximum;
+import br.com.consultdata.core.model.Minimum;
+import br.com.consultdata.core.model.OtherService;
+import br.com.consultdata.core.model.Price;
+import br.com.consultdata.dataprovider.entity.MaximumEntity;
+import br.com.consultdata.dataprovider.entity.MinimumEntity;
+import br.com.consultdata.dataprovider.entity.OtherServiceEntity;
+import br.com.consultdata.dataprovider.entity.PriceEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.MaximumFixture;
+import br.com.consultdata.fixtures.resource.MinimumFixture;
+import br.com.consultdata.fixtures.resource.OtherServiceEntityFixture;
+import br.com.consultdata.fixtures.resource.OtherServiceFixture;
+import br.com.consultdata.fixtures.resource.PriceFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,25 +22,24 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-class OtherServiceToOtherServiceFromServiceBundleEntityMapperTestPersonalAccounts {
+class OtherServiceEntityToOtherServiceMapperTest {
 
     @InjectMocks
-    private OtherServiceToOtherServiceEntityMapper mapper;
+    private OtherServiceEntityToOtherServiceMapper mapper;
 
     @Mock
-    PriceToPriceEntityMapper priceToPriceEntityMapper;
+    PriceEntityToPriceMapper priceEntityToPriceMapper;
 
     @Mock
-    MinimumToMinimumEntityMapper minimumToMinimumEntityMapper;
+    MinimumEntityToMinimumMapper minimumEntityToMinimumMapper;
 
     @Mock
-    MaximumToMaximumEntityMapper maximumToMaximumEntityMapper;
-
-
+    MaximumEntityToMaximumMapper maximumEntityToMaximumMapper;
 
 
     @BeforeAll
@@ -49,22 +48,22 @@ class OtherServiceToOtherServiceFromServiceBundleEntityMapperTestPersonalAccount
     }
 
     @Test
-    void given_a_other_service_mapper_When_call_convert_to_other_service_entity_Then_return_other_service_entity() {
+    void given_a_other_service__entity_mapper_When_call_convert_to_other_service_Then_return_other_service() {
 
-        final MinimumEntity minimumEntityMock = Fixture.from(MinimumEntity.class).gimme(MinimumEntityFixture.VALID);
-        final PriceEntity priceEntityMock = Fixture.from(PriceEntity.class).gimme(PriceEntityFixture.VALID);
-        final MaximumEntity maximumEntityMock = Fixture.from(MaximumEntity.class).gimme(MaximumEntityFixture.VALID);
+        final Minimum minimumMock = Fixture.from(Minimum.class).gimme(MinimumFixture.VALID);
+        final Price priceMock = Fixture.from(Price.class).gimme(PriceFixture.VALID);
+        final Maximum maximumMock = Fixture.from(Maximum.class).gimme(MaximumFixture.VALID);
 
         final OtherService otherServiceMock = Fixture.from(OtherService.class).gimme(OtherServiceFixture.VALID);
         final OtherServiceEntity otherServiceEntityMock = Fixture.from(OtherServiceEntity.class).gimme(OtherServiceEntityFixture.VALID);
 
-        when(priceToPriceEntityMapper.convert(any(Price.class))).thenReturn(priceEntityMock);
-        when(minimumToMinimumEntityMapper.convert(any(Minimum.class))).thenReturn(minimumEntityMock);
-        when(maximumToMaximumEntityMapper.convert(any(Maximum.class))).thenReturn(maximumEntityMock);
+        when(priceEntityToPriceMapper.convert(any(PriceEntity.class))).thenReturn(priceMock);
+        when(minimumEntityToMinimumMapper.convert(any(MinimumEntity.class))).thenReturn(minimumMock);
+        when(maximumEntityToMaximumMapper.convert(any(MaximumEntity.class))).thenReturn(maximumMock);
 
 
-        final OtherServiceEntity otherServiceEntity = mapper.convert(otherServiceMock);
+        final OtherService otherService = mapper.convert(otherServiceEntityMock);
 
-        assertThat(otherServiceEntity).isEqualTo(otherServiceEntityMock);
+        assertThat(otherService).isEqualTo(otherServiceMock);
     }
 }

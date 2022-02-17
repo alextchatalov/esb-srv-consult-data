@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 @AllArgsConstructor
-public class IncomeRateToIncomeRateEntityMapper implements Converter<IncomeRate, IncomeRateEntity> {
+public class IncomeRateEntityToIncomeRateMapper implements Converter<IncomeRateEntity, IncomeRate> {
 
 
     @Override
     @NonNull
-    public IncomeRateEntity convert(final IncomeRate incomeRate) {
-        return IncomeRateEntity.builder()
+    public IncomeRate convert(final IncomeRateEntity incomeRate) {
+        return IncomeRate.builder()
                 .savingAccount(incomeRate.getSavingAccount())
                 .prepaidPaymentAccount(incomeRate.getPrepaidPaymentAccount())
                 .build();

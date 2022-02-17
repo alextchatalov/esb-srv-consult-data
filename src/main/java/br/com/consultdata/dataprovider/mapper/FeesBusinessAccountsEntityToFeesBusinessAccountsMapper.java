@@ -18,19 +18,19 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class FeesBusinessAccountsToFeesBusinessAccountsEntityMapper implements Converter<FeesBusinessAccounts, FeesBusinessAccountsEntity> {
+public class FeesBusinessAccountsEntityToFeesBusinessAccountsMapper implements Converter<FeesBusinessAccountsEntity, FeesBusinessAccounts> {
 
     private final ServiceBusinessAccountsEntityToServiceBusinessAccountsMapper serviceBusinessAccountsEntityToServiceBusinessAccountsMapper;
 
     @Override
     @NonNull
-    public FeesBusinessAccountsEntity convert(final FeesBusinessAccounts feesBusinessAccounts) {
-        return FeesBusinessAccountsEntity.builder()
-                .services(convertListOfServiceBusinessAccountsToListOfServiceBusinessAccountsEntity(feesBusinessAccounts.getServices()))
+    public FeesBusinessAccounts convert(final FeesBusinessAccountsEntity feesBusinessAccounts) {
+        return FeesBusinessAccounts.builder()
+                .services(convertListOfServiceBusinessAccountsEntityToListOfServiceBusinessAccounts(feesBusinessAccounts.getServices()))
                 .build();
     }
 
-    private List<ServiceBusinessAccountsEntity> convertListOfServiceBusinessAccountsToListOfServiceBusinessAccountsEntity(final List<ServiceBusinessAccounts> serviceBusinessAccounts) {
+    private List<ServiceBusinessAccounts> convertListOfServiceBusinessAccountsEntityToListOfServiceBusinessAccounts(final List<ServiceBusinessAccountsEntity> serviceBusinessAccounts) {
         return serviceBusinessAccounts.stream().map(serviceBusinessAccountsEntityToServiceBusinessAccountsMapper::convert).collect(Collectors.toList());
     }
 

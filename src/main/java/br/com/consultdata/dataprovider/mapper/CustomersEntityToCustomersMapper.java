@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 @AllArgsConstructor
-public class CustomersToCustomersEntityMapper implements Converter<Customers, CustomersEntity> {
+public class CustomersEntityToCustomersMapper implements Converter<CustomersEntity, Customers> {
 
     @Override
     @NonNull
-    public CustomersEntity convert(final Customers customers) {
-        return CustomersEntity.builder()
+    public Customers convert(final CustomersEntity customers) {
+        return Customers.builder()
                 .rate(customers.getRate())
                 .build();
     }

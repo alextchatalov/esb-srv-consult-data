@@ -1,9 +1,9 @@
-package br.com.bestbank.backbestbank.fixtures;
+package br.com.consultdata.fixtures;
 
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 public class FixtureLoader  {
-    private static  final String FIXTURE_PACKAGE= "br.com.bestbank.getdataopenbanking.fixtures.resource";
+    private static  final String FIXTURE_PACKAGE= "br.com.consultdata.fixtures.resource";
 
     private FixtureLoader() {
 

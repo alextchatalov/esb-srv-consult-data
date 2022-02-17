@@ -1,7 +1,7 @@
-package br.com.bestbank.backbestbank.fixtures.resource;
+package br.com.consultdata.fixtures.resource;
 
-import br.com.bestbank.getdataopenbanking.core.model.Category;
-import br.com.bestbank.getdataopenbanking.core.model.Response;
+import br.com.consultdata.core.model.Category;
+import br.com.consultdata.core.model.Response;
 
 import java.time.LocalDateTime;
 

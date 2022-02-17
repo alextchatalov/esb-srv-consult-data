@@ -1,22 +1,22 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.BusinessAccount;
-import br.com.bestbank.getdataopenbanking.core.model.FeesBusinessAccounts;
-import br.com.bestbank.getdataopenbanking.core.model.IncomeRate;
-import br.com.bestbank.getdataopenbanking.core.model.ServiceBundle;
-import br.com.bestbank.getdataopenbanking.core.model.TermsConditions;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.BusinessAccountEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.FeesBusinessAccountsEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.IncomeRateEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.ServiceBundleEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.TermsConditionsEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.BusinessAccountEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.BusinessAccountFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.FeesBusinessAccountsEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.IncomeRateEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.ServiceBundleEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.TermsConditionsEntityFixture;
+import br.com.consultdata.core.model.BusinessAccount;
+import br.com.consultdata.core.model.FeesBusinessAccounts;
+import br.com.consultdata.core.model.IncomeRate;
+import br.com.consultdata.core.model.ServiceBundle;
+import br.com.consultdata.core.model.TermsConditions;
+import br.com.consultdata.dataprovider.entity.BusinessAccountEntity;
+import br.com.consultdata.dataprovider.entity.FeesBusinessAccountsEntity;
+import br.com.consultdata.dataprovider.entity.IncomeRateEntity;
+import br.com.consultdata.dataprovider.entity.ServiceBundleEntity;
+import br.com.consultdata.dataprovider.entity.TermsConditionsEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.BusinessAccountEntityFixture;
+import br.com.consultdata.fixtures.resource.BusinessAccountFixture;
+import br.com.consultdata.fixtures.resource.FeesBusinessAccountsFixture;
+import br.com.consultdata.fixtures.resource.IncomeRateFixture;
+import br.com.consultdata.fixtures.resource.ServiceBundleFixture;
+import br.com.consultdata.fixtures.resource.TermsConditionsFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,26 +25,27 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-class BusinessAccountToBusinessAccountEntityMapperTest {
+class BusinessAccountEntityToBusinessAccountMapperTest {
 
     @InjectMocks
-    private BusinessAccountToBusinessAccountEntityMapper mapper;
+    private BusinessAccountEntityToBusinessAccountMapper mapper;
 
     @Mock
-    FeesBusinessAccountsToFeesBusinessAccountsEntityMapper feesBusinessAccountsToFeesBusinessAccountsEntityMapper;
+    FeesBusinessAccountsEntityToFeesBusinessAccountsMapper feesBusinessAccountsEntityToFeesBusinessAccountsMapper;
 
     @Mock
-    ServiceBundleToServiceBundleEntityMapper serviceBundleToServiceBundleEntityMapper;
+    ServiceBundleEntityToServiceBundleMapper serviceBundleEntityToServiceBundleMapper;
 
     @Mock
-    TermsConditionsToTermsConditionsEntityMapper termsConditionsToTermsConditionsEntityMapper;
+    TermsConditionsEntityToTermsConditionsMapper termsConditionsEntityToTermsConditionsMapper;
 
     @Mock
-    IncomeRateToIncomeRateEntityMapper incomeRateToIncomeRateEntityMapper;
+    IncomeRateEntityToIncomeRateMapper incomeRateEntityToIncomeRateMapper;
 
 
 
@@ -54,24 +55,24 @@ class BusinessAccountToBusinessAccountEntityMapperTest {
     }
 
     @Test
-    void given_a_business_account_mapper_When_call_convert_to_business_account_entity_Then_return_business_account_entity() {
+    void given_a_business_account_entity_mapper_When_call_convert_to_business_account_Then_return_business_account() {
 
-        final ServiceBundleEntity serviceBundleEntityMock = Fixture.from(ServiceBundleEntity.class).gimme(ServiceBundleEntityFixture.VALID);
-        final FeesBusinessAccountsEntity feesBusinessAccountEntityMock = Fixture.from(FeesBusinessAccountsEntity.class).gimme(FeesBusinessAccountsEntityFixture.VALID);
-        final TermsConditionsEntity termsConditionsEntityMock = Fixture.from(TermsConditionsEntity.class).gimme(TermsConditionsEntityFixture.VALID);
-        final IncomeRateEntity incomeRateEntityMock = Fixture.from(IncomeRateEntity.class).gimme(IncomeRateEntityFixture.VALID);
+        final ServiceBundle serviceBundleMock = Fixture.from(ServiceBundle.class).gimme(ServiceBundleFixture.VALID);
+        final FeesBusinessAccounts feesBusinessAccountMock = Fixture.from(FeesBusinessAccounts.class).gimme(FeesBusinessAccountsFixture.VALID);
+        final TermsConditions termsConditionsMock = Fixture.from(TermsConditions.class).gimme(TermsConditionsFixture.VALID);
+        final IncomeRate incomeRateMock = Fixture.from(IncomeRate.class).gimme(IncomeRateFixture.VALID);
 
         final BusinessAccount businessAccountMock = Fixture.from(BusinessAccount.class).gimme(BusinessAccountFixture.VALID);
         final BusinessAccountEntity businessAccountEntityMock = Fixture.from(BusinessAccountEntity.class).gimme(BusinessAccountEntityFixture.VALID);
 
-        when(serviceBundleToServiceBundleEntityMapper.convert(any(ServiceBundle.class))).thenReturn(serviceBundleEntityMock);
-        when(feesBusinessAccountsToFeesBusinessAccountsEntityMapper.convert(any(FeesBusinessAccounts.class))).thenReturn(feesBusinessAccountEntityMock);
-        when(termsConditionsToTermsConditionsEntityMapper.convert(any(TermsConditions.class))).thenReturn(termsConditionsEntityMock);
-        when(incomeRateToIncomeRateEntityMapper.convert(any(IncomeRate.class))).thenReturn(incomeRateEntityMock);
+        when(serviceBundleEntityToServiceBundleMapper.convert(any(ServiceBundleEntity.class))).thenReturn(serviceBundleMock);
+        when(feesBusinessAccountsEntityToFeesBusinessAccountsMapper.convert(any(FeesBusinessAccountsEntity.class))).thenReturn(feesBusinessAccountMock);
+        when(termsConditionsEntityToTermsConditionsMapper.convert(any(TermsConditionsEntity.class))).thenReturn(termsConditionsMock);
+        when(incomeRateEntityToIncomeRateMapper.convert(any(IncomeRateEntity.class))).thenReturn(incomeRateMock);
 
 
-        final BusinessAccountEntity businessAccountEntity = mapper.convert(businessAccountMock);
+        final BusinessAccount businessAccount = mapper.convert(businessAccountEntityMock);
 
-        assertThat(businessAccountEntity).isEqualTo(businessAccountEntityMock);
+        assertThat(businessAccount).isEqualTo(businessAccountMock);
     }
 }

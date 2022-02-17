@@ -1,4 +1,4 @@
-package br.com.bestbank.getdataopenbanking.core.model;
+package br.com.consultdata.core.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

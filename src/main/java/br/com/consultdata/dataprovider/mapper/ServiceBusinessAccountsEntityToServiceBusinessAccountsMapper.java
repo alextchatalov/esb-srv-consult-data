@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class ServiceBusinessAccountsToServiceBusinessAccountsEntityMapper implements Converter<ServiceBusinessAccounts, ServiceBusinessAccountsEntity> {
+public class ServiceBusinessAccountsEntityToServiceBusinessAccountsMapper implements Converter<ServiceBusinessAccountsEntity, ServiceBusinessAccounts> {
 
     private final PriceEntityToPriceMapper priceEntityToPriceMapper;
     private final MinimumEntityToMinimumMapper minimumEntityToMinimumMapper;
@@ -26,12 +26,12 @@ public class ServiceBusinessAccountsToServiceBusinessAccountsEntityMapper implem
 
     @Override
     @NonNull
-    public ServiceBusinessAccountsEntity convert(final ServiceBusinessAccounts serviceBusinessAccounts) {
-        return ServiceBusinessAccountsEntity.builder()
+    public ServiceBusinessAccounts convert(final ServiceBusinessAccountsEntity serviceBusinessAccounts) {
+        return ServiceBusinessAccounts.builder()
                 .name(serviceBusinessAccounts.getName())
                 .code(serviceBusinessAccounts.getCode())
                 .chargingTriggerInfo(serviceBusinessAccounts.getChargingTriggerInfo())
-                .prices(convertListOfPricesToListOfPricesEntity(serviceBusinessAccounts.getPrices()))
+                .prices(convertListOfPricesEntityToListOfPrices(serviceBusinessAccounts.getPrices()))
                 .minimum(minimumEntityToMinimumMapper.convert(serviceBusinessAccounts.getMinimum()))
                 .maximum(maximumEntityToMaximumMapper.convert(serviceBusinessAccounts.getMaximum()))
                 .eventLimitQuantity(serviceBusinessAccounts.getEventLimitQuantity())
@@ -39,7 +39,7 @@ public class ServiceBusinessAccountsToServiceBusinessAccountsEntityMapper implem
                 .build();
     }
 
-    private List<PriceEntity> convertListOfPricesToListOfPricesEntity(final List<Price> prices) {
+    private List<Price> convertListOfPricesEntityToListOfPrices(final List<PriceEntity> prices) {
         return prices.stream().map(priceEntityToPriceMapper::convert).collect(Collectors.toList());
 
     }

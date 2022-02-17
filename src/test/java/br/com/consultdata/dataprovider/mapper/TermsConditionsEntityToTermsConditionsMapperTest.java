@@ -21,7 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-class TermsConditionsToTermsConditionsEntityMapperTest {
+class TermsConditionsEntityToTermsConditionsMapperTest {
 
     @InjectMocks
     private TermsConditionsEntityToTermsConditionsMapper mapper;

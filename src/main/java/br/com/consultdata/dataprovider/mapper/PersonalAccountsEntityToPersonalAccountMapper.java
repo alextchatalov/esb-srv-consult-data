@@ -19,33 +19,33 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class PersonalAccountsToPersonalAccountEntityMapper implements Converter<PersonalAccount, PersonalAccountEntity> {
+public class PersonalAccountsEntityToPersonalAccountMapper implements Converter<PersonalAccountEntity, PersonalAccount> {
 
-    private final FeesPersonalAccountsToFeesPersonalAccountsEntityMapper feesPersonalAccountsToFeesPersonalAccountsEntityMapper;
+    private final FeesPersonalAccountsEntityToFeesPersonalAccountsMapper feesPersonalAccountsEntityToFeesPersonalAccountsMapper;
     private final ServiceBundleEntityToServiceBundleMapper serviceBundleEntityToServiceBundleMapper;
     private final TermsConditionsEntityToTermsConditionsMapper termsConditionsEntityToTermsConditionsMapper;
     private final IncomeRateEntityToIncomeRateMapper incomeRateEntityToIncomeRateMapper;
 
     @Override
     @NonNull
-    public PersonalAccountEntity convert(final PersonalAccount personalAccount) {
-        return PersonalAccountEntity.builder()
+    public PersonalAccount convert(final PersonalAccountEntity personalAccount) {
+        return PersonalAccount.builder()
                 .type(personalAccount.getType())
-                .fees(feesPersonalAccountsToFeesPersonalAccountsEntityMapper.convert(personalAccount.getFees()))
-                .serviceBundles(convertListOfServiceBundleToListOfServiceBundleEntity(personalAccount.getServiceBundles()))
+                .fees(feesPersonalAccountsEntityToFeesPersonalAccountsMapper.convert(personalAccount.getFees()))
+                .serviceBundles(convertListOfServiceBundleEntityToListOfServiceBundle(personalAccount.getServiceBundles()))
                 .openingClosingChannels(personalAccount.getOpeningClosingChannels())
                 .additionalInfo(personalAccount.getAdditionalInfo())
                 .transactionMethods(personalAccount.getTransactionMethods())
                 .termsConditions(termsConditionsEntityToTermsConditionsMapper.convert(personalAccount.getTermsConditions()))
-                .incomeRate(convertListOfIncomeRateToListOfIncomeRateEntity(personalAccount.getIncomeRate()))
+                .incomeRate(convertListOfIncomeRateEntityToListOfIncomeRate(personalAccount.getIncomeRate()))
                 .build();
     }
 
-    private List<ServiceBundleEntity> convertListOfServiceBundleToListOfServiceBundleEntity(final List<ServiceBundle> serviceBundles) {
+    private List<ServiceBundle> convertListOfServiceBundleEntityToListOfServiceBundle(final List<ServiceBundleEntity> serviceBundles) {
         return serviceBundles.stream().map(serviceBundleEntityToServiceBundleMapper::convert).collect(Collectors.toList());
     }
 
-    private List<IncomeRateEntity> convertListOfIncomeRateToListOfIncomeRateEntity(final List<IncomeRate> incomeRates) {
+    private List<IncomeRate> convertListOfIncomeRateEntityToListOfIncomeRate(final List<IncomeRateEntity> incomeRates) {
         return incomeRates.stream().map(incomeRateEntityToIncomeRateMapper::convert).collect(Collectors.toList());
     }
 

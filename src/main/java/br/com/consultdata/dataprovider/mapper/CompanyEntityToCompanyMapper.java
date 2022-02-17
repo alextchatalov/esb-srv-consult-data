@@ -20,31 +20,31 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class CompanyToCompanyEntityMapper implements Converter<Company, CompanyEntity> {
+public class CompanyEntityToCompanyMapper implements Converter<CompanyEntity, Company> {
 
     private final PersonalAccountsEntityToPersonalAccountMapper personalAccountsEntityToPersonalAccountMapper;
     private final BusinessAccountEntityToBusinessAccountMapper businessAccountEntityToBusinessAccountMapper;
 
     @Override
     @NonNull
-    public CompanyEntity convert(final Company company) {
-        return CompanyEntity.builder()
+    public Company convert(final CompanyEntity company) {
+        return Company.builder()
                 .cnpjNumber(company.getCnpjNumber())
                 .name(company.getName())
-                .personalAccounts(convertPersonalAccountsListToPersonalAccountEntityList(company.getPersonalAccounts()))
-                .businessAccounts(convertBusinessAccountListToBusinessAccountEntityList(company.getBusinessAccounts()))
+                .personalAccounts(convertPersonalAccountsEntityListToPersonalAccountList(company.getPersonalAccounts()))
+                .businessAccounts(convertBusinessAccountEntityListToBusinessAccountList(company.getBusinessAccounts()))
                 .urlComplementaryList(company.getUrlComplementaryList())
                 .build();
     }
 
-    private List<PersonalAccountEntity> convertPersonalAccountsListToPersonalAccountEntityList(final List<PersonalAccount> personalAccounts) {
+    private List<PersonalAccount> convertPersonalAccountsEntityListToPersonalAccountList(final List<PersonalAccountEntity> personalAccounts) {
         if (personalAccounts != null && !personalAccounts.isEmpty()) {
             return personalAccounts.stream().map(personalAccountsEntityToPersonalAccountMapper::convert).collect(Collectors.toList());
         }
         return null;
     }
 
-    private List<BusinessAccountEntity> convertBusinessAccountListToBusinessAccountEntityList(final List<BusinessAccount> businessAccounts) {
+    private List<BusinessAccount> convertBusinessAccountEntityListToBusinessAccountList(final List<BusinessAccountEntity> businessAccounts) {
         if (businessAccounts != null && !businessAccounts.isEmpty()) {
             return businessAccounts.stream().map(businessAccountEntityToBusinessAccountMapper::convert).collect(Collectors.toList());
         }

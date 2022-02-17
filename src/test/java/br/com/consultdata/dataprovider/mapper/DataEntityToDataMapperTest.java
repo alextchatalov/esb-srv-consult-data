@@ -1,13 +1,13 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.Company;
-import br.com.bestbank.getdataopenbanking.core.model.Data;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.CompanyEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.DataEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.CompanyEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.DataEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.DataFixture;
+import br.com.consultdata.core.model.Company;
+import br.com.consultdata.core.model.Data;
+import br.com.consultdata.dataprovider.entity.CompanyEntity;
+import br.com.consultdata.dataprovider.entity.DataEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.CompanyFixture;
+import br.com.consultdata.fixtures.resource.DataEntityFixture;
+import br.com.consultdata.fixtures.resource.DataFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,17 +16,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-class DataToDataEntityMapperTest {
+class DataEntityToDataMapperTest {
 
     @InjectMocks
-    private DataToDataEntityMapper mapper;
+    private DataEntityToDataMapper mapper;
 
     @Mock
-    CompanyToCompanyEntityMapper companyToCompanyEntityMapper;
+    CompanyEntityToCompanyMapper companyEntityToCompanyMapper;
 
     @BeforeAll
     public static void setup() {
@@ -38,12 +39,12 @@ class DataToDataEntityMapperTest {
 
         final Data dataMock = Fixture.from(Data.class).gimme(DataFixture.VALID);
         final DataEntity dataEntityMock = Fixture.from(DataEntity.class).gimme(DataEntityFixture.VALID);
-        final CompanyEntity companyEntityMock = Fixture.from(CompanyEntity.class).gimme(CompanyEntityFixture.VALID);
+        final Company companyMock = Fixture.from(Company.class).gimme(CompanyFixture.VALID);
 
-        when(companyToCompanyEntityMapper.convert(any(Company.class))).thenReturn(companyEntityMock);
+        when(companyEntityToCompanyMapper.convert(any(CompanyEntity.class))).thenReturn(companyMock);
 
-        final DataEntity dataEntity = mapper.convert(dataMock);
+        final Data data = mapper.convert(dataEntityMock);
 
-        assertThat(dataEntity).isEqualTo(dataEntityMock);
+        assertThat(data).isEqualTo(dataMock);
     }
 }

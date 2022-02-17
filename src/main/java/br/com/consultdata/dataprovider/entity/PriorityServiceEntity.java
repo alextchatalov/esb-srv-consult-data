@@ -1,4 +1,4 @@
-package br.com.bestbank.getdataopenbanking.dataprovider.entity;
+package br.com.consultdata.dataprovider.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

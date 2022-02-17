@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 @AllArgsConstructor
-public class MaximumToMaximumEntityMapper implements Converter<Maximum, MaximumEntity> {
+public class MaximumEntityToMaximumMapper implements Converter<MaximumEntity, Maximum> {
 
     @Override
     @NonNull
-    public MaximumEntity convert(final Maximum maximum) {
-        return MaximumEntity.builder()
+    public Maximum convert(final MaximumEntity maximum) {
+        return Maximum.builder()
                 .value(maximum.getValue())
                 .currency(maximum.getCurrency())
                 .build();

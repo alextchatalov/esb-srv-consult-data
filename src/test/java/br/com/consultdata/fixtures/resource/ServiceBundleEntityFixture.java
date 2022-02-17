@@ -1,11 +1,11 @@
-package br.com.bestbank.backbestbank.fixtures.resource;
+package br.com.consultdata.fixtures.resource;
 
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.CustomersEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MaximumEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.MinimumEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.PriceEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.ServiceBundleEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.ServiceFromServiceBundleEntity;
+import br.com.consultdata.dataprovider.entity.CustomersEntity;
+import br.com.consultdata.dataprovider.entity.MaximumEntity;
+import br.com.consultdata.dataprovider.entity.MinimumEntity;
+import br.com.consultdata.dataprovider.entity.PriceEntity;
+import br.com.consultdata.dataprovider.entity.ServiceBundleEntity;
+import br.com.consultdata.dataprovider.entity.ServiceFromServiceBundleEntity;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;

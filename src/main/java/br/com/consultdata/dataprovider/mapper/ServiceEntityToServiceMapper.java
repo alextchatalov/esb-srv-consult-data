@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 @EqualsAndHashCode
-public class ServiceToServiceEntityMapper implements Converter<ServiceFromServiceBundle, ServiceFromServiceBundleEntity> {
+public class ServiceEntityToServiceMapper implements Converter<ServiceFromServiceBundleEntity, ServiceFromServiceBundle> {
 
     @Override
     @NonNull
-    public ServiceFromServiceBundleEntity convert(final ServiceFromServiceBundle services) {
-        return ServiceFromServiceBundleEntity.builder()
+    public ServiceFromServiceBundle convert(final ServiceFromServiceBundleEntity services) {
+        return ServiceFromServiceBundle.builder()
                 .code(services.getCode())
                 .chargingTriggerInfo(services.getChargingTriggerInfo())
                 .eventLimitQuantity(services.getEventLimitQuantity())

@@ -13,17 +13,17 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 @AllArgsConstructor
-public class TermsConditionsToTermsConditionsEntityMapper implements Converter<TermsConditions, TermsConditionsEntity> {
+public class TermsConditionsEntityToTermsConditionsMapper implements Converter<TermsConditionsEntity, TermsConditions> {
 
-    private final MinimumBalanceToMinimumBalanceEntityMapper minimumBalanceToMinimumBalanceEntityMapper;
+    private final MinimumBalanceEntityToMinimumBalanceMapper minimumBalanceEntityToMinimumBalanceMapper;
 
     @Override
     @NonNull
-    public TermsConditionsEntity convert(final TermsConditions termsConditions) {
-        return TermsConditionsEntity.builder()
-                .minimumBalance(minimumBalanceToMinimumBalanceEntityMapper.convert(termsConditions.getMinimumBalance()))
-                .elegibilityCriteriaInfo(termsConditions.getElegibilityCriteriaInfo())
-                .closingProcessInfo(termsConditions.getClosingProcessInfo())
+    public TermsConditions convert(final TermsConditionsEntity termsConditionsEntity) {
+        return TermsConditions.builder()
+                .minimumBalance(minimumBalanceEntityToMinimumBalanceMapper.convert(termsConditionsEntity.getMinimumBalance()))
+                .elegibilityCriteriaInfo(termsConditionsEntity.getElegibilityCriteriaInfo())
+                .closingProcessInfo(termsConditionsEntity.getClosingProcessInfo())
                 .build();
     }
 

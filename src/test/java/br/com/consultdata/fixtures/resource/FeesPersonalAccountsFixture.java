@@ -14,7 +14,7 @@ import br.com.six2six.fixturefactory.loader.TemplateLoader;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class FeesFixture implements TemplateLoader {
+public class FeesPersonalAccountsFixture implements TemplateLoader {
 
     public static final String VALID = "valid";
 

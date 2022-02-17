@@ -1,10 +1,10 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.ServiceFromServiceBundle;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.ServiceFromServiceBundleEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.ServiceEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.ServiceFixture;
+import br.com.consultdata.core.model.ServiceFromServiceBundle;
+import br.com.consultdata.dataprovider.entity.ServiceFromServiceBundleEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.ServiceFromServiceBundleEntityFixture;
+import br.com.consultdata.fixtures.resource.ServiceFromServiceBundleFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,11 +12,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @ExtendWith(SpringExtension.class)
-class ServiceToServiceFromServiceBundleEntityMapperTestPersonalAccounts {
+class ServiceEntityToServiceMapperTest {
 
     @InjectMocks
-    private ServiceToServiceEntityMapper mapper;
+    private ServiceEntityToServiceMapper mapper;
 
     @BeforeAll
     public static void setup() {
@@ -24,13 +26,13 @@ class ServiceToServiceFromServiceBundleEntityMapperTestPersonalAccounts {
     }
 
     @Test
-    void given_a_service_mapper_When_call_convert_to_service_entity_Then_return_service_entity() {
+    void given_a_service_entity_mapper_When_call_convert_to_service_Then_return_service() {
 
-        final ServiceFromServiceBundle serviceFromServiceBundleMock = Fixture.from(ServiceFromServiceBundle.class).gimme(ServiceFixture.VALID);
-        final ServiceFromServiceBundleEntity serviceFromServiceBundleEntityMock = Fixture.from(ServiceFromServiceBundleEntity.class).gimme(ServiceEntityFixture.VALID);
+        final ServiceFromServiceBundle serviceFromServiceBundleMock = Fixture.from(ServiceFromServiceBundle.class).gimme(ServiceFromServiceBundleFixture.VALID);
+        final ServiceFromServiceBundleEntity serviceFromServiceBundleEntityMock = Fixture.from(ServiceFromServiceBundleEntity.class).gimme(ServiceFromServiceBundleEntityFixture.VALID);
 
-        final ServiceFromServiceBundleEntity serviceFromServiceBundleEntity = mapper.convert(serviceFromServiceBundleMock);
+        final ServiceFromServiceBundle serviceFromServiceBundle = mapper.convert(serviceFromServiceBundleEntityMock);
 
-        assertThat(serviceFromServiceBundleEntity).isEqualTo(serviceFromServiceBundleEntityMock);
+        assertThat(serviceFromServiceBundle).isEqualTo(serviceFromServiceBundleMock);
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 @FieldNameConstants
 @EqualsAndHashCode
 @ToString
-public class FeesEntity {
+public class FeesPersonalAccountsEntity {
     private List<PriorityServiceEntity> priorityServices;
     private List<OtherServiceEntity> otherServices;
 }

@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 @AllArgsConstructor
-public class PriceToPriceEntityMapper implements Converter<Price, PriceEntity> {
+public class PriceEntityToPriceMapper implements Converter<PriceEntity, Price> {
 
     private final CustomersEntityToCustomersMapper customersEntityToCustomersMapper;
 
     @Override
     @NonNull
-    public PriceEntity convert(final Price price) {
-        return PriceEntity.builder()
+    public Price convert(final PriceEntity price) {
+        return Price.builder()
                 .interval(price.getInterval())
                 .value(price.getValue())
                 .currency(price.getCurrency())

@@ -1,4 +1,4 @@
-package br.com.bestbank.getdataopenbanking.dataprovider.entity;
+package br.com.consultdata.dataprovider.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +19,7 @@ import java.util.List;
 @ToString
 public class PersonalAccountEntity {
     private String type;
-    private FeesEntity fees;
+    private FeesPersonalAccountsEntity fees;
     private List<ServiceBundleEntity> serviceBundles;
     private List<String> openingClosingChannels;
     private String additionalInfo;

@@ -1,4 +1,4 @@
-package br.com.bestbank.getdataopenbanking.exception;
+package br.com.consultdata.exception;
 
 import lombok.Getter;
 import lombok.experimental.FieldNameConstants;

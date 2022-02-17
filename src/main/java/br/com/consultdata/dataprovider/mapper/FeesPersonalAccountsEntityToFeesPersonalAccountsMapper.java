@@ -3,7 +3,7 @@ package br.com.consultdata.dataprovider.mapper;
 import br.com.consultdata.core.model.FeesPersonalAccounts;
 import br.com.consultdata.core.model.OtherService;
 import br.com.consultdata.core.model.PriorityService;
-import br.com.consultdata.dataprovider.entity.FeesEntity;
+import br.com.consultdata.dataprovider.entity.FeesPersonalAccountsEntity;
 import br.com.consultdata.dataprovider.entity.OtherServiceEntity;
 import br.com.consultdata.dataprovider.entity.PriorityServiceEntity;
 import lombok.AllArgsConstructor;
@@ -20,25 +20,25 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class FeesPersonalAccountsToFeesPersonalAccountsEntityMapper implements Converter<FeesPersonalAccounts, FeesEntity> {
+public class FeesPersonalAccountsEntityToFeesPersonalAccountsMapper implements Converter<FeesPersonalAccountsEntity, FeesPersonalAccounts> {
 
     private final PriorityServiceEntityToPriorityServiceMapper priorityServiceEntityToPriorityServiceMapper;
     private final OtherServiceEntityToOtherServiceMapper otherServiceEntityToOtherServiceMapper;
 
     @Override
     @NonNull
-    public FeesEntity convert(final FeesPersonalAccounts feesPersonalAccounts) {
-        return FeesEntity.builder()
-                .priorityServices(convertListOfPriorityServicesToListOfPriorityServicesEntity(feesPersonalAccounts.getPriorityServices()))
-                .otherServices(convertListOfOtherServicesToListOfOtherServicesEntity(feesPersonalAccounts.getOtherServices()))
+    public FeesPersonalAccounts convert(final FeesPersonalAccountsEntity feesPersonalAccounts) {
+        return FeesPersonalAccounts.builder()
+                .priorityServices(convertListOfPriorityServicesEntityToListOfPriorityServices(feesPersonalAccounts.getPriorityServices()))
+                .otherServices(convertListOfOtherServicesEntityToListOfOtherServices(feesPersonalAccounts.getOtherServices()))
                 .build();
     }
 
-    private List<PriorityServiceEntity> convertListOfPriorityServicesToListOfPriorityServicesEntity(final List<PriorityService> priorityServices) {
+    private List<PriorityService> convertListOfPriorityServicesEntityToListOfPriorityServices(final List<PriorityServiceEntity> priorityServices) {
         return priorityServices.stream().map(priorityServiceEntityToPriorityServiceMapper::convert).collect(Collectors.toList());
     }
 
-    private List<OtherServiceEntity> convertListOfOtherServicesToListOfOtherServicesEntity(final List<OtherService> otherServices) {
+    private List<OtherService> convertListOfOtherServicesEntityToListOfOtherServices(final List<OtherServiceEntity> otherServices) {
         return otherServices.stream().map(otherServiceEntityToOtherServiceMapper::convert).collect(Collectors.toList());
     }
 

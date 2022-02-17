@@ -1,13 +1,13 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.Customers;
-import br.com.bestbank.getdataopenbanking.core.model.Price;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.CustomersEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.PriceEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.CustomersEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.PriceEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.PriceFixture;
+import br.com.consultdata.core.model.Customers;
+import br.com.consultdata.core.model.Price;
+import br.com.consultdata.dataprovider.entity.CustomersEntity;
+import br.com.consultdata.dataprovider.entity.PriceEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.CustomersFixture;
+import br.com.consultdata.fixtures.resource.PriceEntityFixture;
+import br.com.consultdata.fixtures.resource.PriceFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,17 +16,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-class PriceToPriceEntityMapperTest {
+class PriceEntityToPriceMapperTest {
 
     @InjectMocks
-    private PriceToPriceEntityMapper mapper;
+    private PriceEntityToPriceMapper mapper;
 
     @Mock
-    CustomersToCustomersEntityMapper customersToCustomersEntityMapper;
+    CustomersEntityToCustomersMapper customersEntityToCustomersMapper;
 
 
     @BeforeAll
@@ -35,17 +36,17 @@ class PriceToPriceEntityMapperTest {
     }
 
     @Test
-    void given_a_price_mapper_When_call_convert_to_price_entity_Then_return_price_entity() {
+    void given_a_price_entity_mapper_When_call_convert_to_price_Then_return_price() {
 
-        final CustomersEntity customersEntityMock = Fixture.from(CustomersEntity.class).gimme(CustomersEntityFixture.VALID);
+        final Customers customersMock = Fixture.from(Customers.class).gimme(CustomersFixture.VALID);
         final Price priceMock = Fixture.from(Price.class).gimme(PriceFixture.VALID);
         final PriceEntity priceEntityMock = Fixture.from(PriceEntity.class).gimme(PriceEntityFixture.VALID);
 
-        when(customersToCustomersEntityMapper.convert(any(Customers.class))).thenReturn(customersEntityMock);
+        when(customersEntityToCustomersMapper.convert(any(CustomersEntity.class))).thenReturn(customersMock);
 
 
-        final PriceEntity priceEntity = mapper.convert(priceMock);
+        final Price price = mapper.convert(priceEntityMock);
 
-        assertThat(priceEntity).isEqualTo(priceEntityMock);
+        assertThat(price).isEqualTo(priceMock);
     }
 }

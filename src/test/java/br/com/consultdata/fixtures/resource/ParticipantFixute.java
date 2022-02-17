@@ -1,8 +1,8 @@
-package br.com.bestbank.backbestbank.fixtures.resource;
+package br.com.consultdata.fixtures.resource;
 
-import br.com.bestbank.getdataopenbanking.core.model.ApiResource;
-import br.com.bestbank.getdataopenbanking.core.model.Participant;
-import br.com.bestbank.getdataopenbanking.core.model.ParticipantStatus;
+import br.com.consultdata.core.model.ApiResource;
+import br.com.consultdata.core.model.Participant;
+import br.com.consultdata.core.model.ParticipantStatus;
 
 import java.util.ArrayList;
 import java.util.Arrays;

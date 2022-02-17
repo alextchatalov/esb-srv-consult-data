@@ -13,15 +13,15 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 @AllArgsConstructor
-public class MinimumBalanceToMinimumBalanceEntityMapper implements Converter<MinimumBalance, MinimumBalanceEntity> {
+public class MinimumBalanceEntityToMinimumBalanceMapper implements Converter<MinimumBalanceEntity, MinimumBalance> {
 
 
     @Override
     @NonNull
-    public MinimumBalanceEntity convert(final MinimumBalance minimumBalance) {
-        return MinimumBalanceEntity.builder()
-                .value(minimumBalance.getValue())
-                .currency(minimumBalance.getCurrency())
+    public MinimumBalance convert(final MinimumBalanceEntity minimumBalanceEntity) {
+        return MinimumBalance.builder()
+                .value(minimumBalanceEntity.getValue())
+                .currency(minimumBalanceEntity.getCurrency())
                 .build();
     }
 

@@ -1,16 +1,16 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.BusinessAccount;
-import br.com.bestbank.getdataopenbanking.core.model.Company;
-import br.com.bestbank.getdataopenbanking.core.model.PersonalAccount;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.BusinessAccountEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.CompanyEntity;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.PersonalAccountEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.BusinessAccountEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.CompanyEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.CompanyFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.PersonalAccountEntityFixture;
+import br.com.consultdata.core.model.BusinessAccount;
+import br.com.consultdata.core.model.Company;
+import br.com.consultdata.core.model.PersonalAccount;
+import br.com.consultdata.dataprovider.entity.BusinessAccountEntity;
+import br.com.consultdata.dataprovider.entity.CompanyEntity;
+import br.com.consultdata.dataprovider.entity.PersonalAccountEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.BusinessAccountFixture;
+import br.com.consultdata.fixtures.resource.CompanyEntityFixture;
+import br.com.consultdata.fixtures.resource.CompanyFixture;
+import br.com.consultdata.fixtures.resource.PersonalAccountFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -19,20 +19,21 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
-class CompanyToCompanyEntityMapperTest {
+class CompanyEntityToCompanyMapperTest {
 
     @InjectMocks
-    private CompanyToCompanyEntityMapper mapper;
+    private CompanyEntityToCompanyMapper mapper;
 
     @Mock
-    PersonalAccountsToPersonalAccountEntityMapper personalAccountsToPersonalAccountEntityMapper;
+    PersonalAccountsEntityToPersonalAccountMapper personalAccountsEntityToPersonalAccountMapper;
 
     @Mock
-    BusinessAccountToBusinessAccountEntityMapper businessAccountToBusinessAccountEntityMapper;
+    BusinessAccountEntityToBusinessAccountMapper businessAccountEntityToBusinessAccountMapper;
 
     @BeforeAll
     public static void setup() {
@@ -40,18 +41,18 @@ class CompanyToCompanyEntityMapperTest {
     }
 
     @Test
-    void given_a_company_mapper_When_call_convert_to_company_entity_Then_return_company_entity() {
+    void given_a_company_entity_mapper_When_call_convert_to_company_Then_return_company() {
 
         final Company companyMock = Fixture.from(Company.class).gimme(CompanyFixture.VALID);
         final CompanyEntity companyEntityMock = Fixture.from(CompanyEntity.class).gimme(CompanyEntityFixture.VALID);
-        final PersonalAccountEntity personalEntityMock = Fixture.from(PersonalAccountEntity.class).gimme(PersonalAccountEntityFixture.VALID);
-        final BusinessAccountEntity businessEntityMock = Fixture.from(BusinessAccountEntity.class).gimme(BusinessAccountEntityFixture.VALID);
+        final PersonalAccount personalMock = Fixture.from(PersonalAccount.class).gimme(PersonalAccountFixture.VALID);
+        final BusinessAccount businessMock = Fixture.from(BusinessAccount.class).gimme(BusinessAccountFixture.VALID);
 
-        when(personalAccountsToPersonalAccountEntityMapper.convert(any(PersonalAccount.class))).thenReturn(personalEntityMock);
-        when(businessAccountToBusinessAccountEntityMapper.convert(any(BusinessAccount.class))).thenReturn(businessEntityMock);
+        when(personalAccountsEntityToPersonalAccountMapper.convert(any(PersonalAccountEntity.class))).thenReturn(personalMock);
+        when(businessAccountEntityToBusinessAccountMapper.convert(any(BusinessAccountEntity.class))).thenReturn(businessMock);
 
-        final CompanyEntity companyEntity = mapper.convert(companyMock);
+        final Company company = mapper.convert(companyEntityMock);
 
-        assertThat(companyEntity).isEqualTo(companyEntityMock);
+        assertThat(company).isEqualTo(companyMock);
     }
 }

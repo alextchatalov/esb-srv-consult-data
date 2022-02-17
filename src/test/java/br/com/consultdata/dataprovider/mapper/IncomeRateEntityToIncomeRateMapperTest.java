@@ -1,10 +1,10 @@
 package br.com.consultdata.dataprovider.mapper;
 
-import br.com.bestbank.getdataopenbanking.core.model.IncomeRate;
-import br.com.bestbank.getdataopenbanking.dataprovider.entity.IncomeRateEntity;
-import br.com.bestbank.getdataopenbanking.fixtures.FixtureLoader;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.IncomeRateEntityFixture;
-import br.com.bestbank.getdataopenbanking.fixtures.resource.IncomeRateFixture;
+import br.com.consultdata.core.model.IncomeRate;
+import br.com.consultdata.dataprovider.entity.IncomeRateEntity;
+import br.com.consultdata.fixtures.FixtureLoader;
+import br.com.consultdata.fixtures.resource.IncomeRateEntityFixture;
+import br.com.consultdata.fixtures.resource.IncomeRateFixture;
 import br.com.six2six.fixturefactory.Fixture;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,11 +12,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @ExtendWith(SpringExtension.class)
-class IncomeRateToIncomeRateEntityMapperTest {
+class IncomeRateEntityToIncomeRateMapperTest {
 
     @InjectMocks
-    private IncomeRateToIncomeRateEntityMapper mapper;
+    private IncomeRateEntityToIncomeRateMapper mapper;
 
     @BeforeAll
     public static void setup() {
@@ -24,13 +26,13 @@ class IncomeRateToIncomeRateEntityMapperTest {
     }
 
     @Test
-    void given_a_incomeRate_mapper_When_call_convert_to_incomeRate_entity_Then_return_incomeRate_entity() {
+    void given_a_incomeRate_entity_mapper_When_call_convert_to_incomeRate_Then_return_incomeRate() {
 
         final IncomeRate incomeRateMock = Fixture.from(IncomeRate.class).gimme(IncomeRateFixture.VALID);
         final IncomeRateEntity incomeRateEntityMock = Fixture.from(IncomeRateEntity.class).gimme(IncomeRateEntityFixture.VALID);
 
-        final IncomeRateEntity incomeRateEntity = mapper.convert(incomeRateMock);
+        final IncomeRate incomeRate = mapper.convert(incomeRateEntityMock);
 
-        assertThat(incomeRateEntity).isEqualTo(incomeRateEntityMock);
+        assertThat(incomeRate).isEqualTo(incomeRateMock);
     }
 }

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class ServiceBundleToServiceBundleEntityMapper implements Converter<ServiceBundle, ServiceBundleEntity> {
+public class ServiceBundleEntityToServiceBundleMapper implements Converter<ServiceBundleEntity, ServiceBundle> {
 
     private final PriceEntityToPriceMapper priceEntityToPriceMapper;
     private final MinimumEntityToMinimumMapper minimumEntityToMinimumMapper;
@@ -29,21 +29,21 @@ public class ServiceBundleToServiceBundleEntityMapper implements Converter<Servi
 
     @Override
     @NonNull
-    public ServiceBundleEntity convert(final ServiceBundle serviceBundle) {
-        return ServiceBundleEntity.builder()
+    public ServiceBundle convert(final ServiceBundleEntity serviceBundle) {
+        return ServiceBundle.builder()
                 .name(serviceBundle.getName())
-                .services(convertListOfServicesToListOfServicesEntity(serviceBundle.getServices()))
-                .prices(convertListOfPricesToListOfPricesEntity(serviceBundle.getPrices()))
+                .services(convertListOfServicesEntityToListOfServices(serviceBundle.getServices()))
+                .prices(convertListOfPricesEntityToListOfPrices(serviceBundle.getPrices()))
                 .minimum(minimumEntityToMinimumMapper.convert(serviceBundle.getMinimum()))
                 .maximum(maximumEntityToMaximumMapper.convert(serviceBundle.getMaximum()))
                 .build();
     }
 
-    private List<PriceEntity> convertListOfPricesToListOfPricesEntity(final List<Price> prices) {
+    private List<Price> convertListOfPricesEntityToListOfPrices(final List<PriceEntity> prices) {
         return prices.stream().map(priceEntityToPriceMapper::convert).collect(Collectors.toList());
     }
 
-    private List<ServiceFromServiceBundleEntity> convertListOfServicesToListOfServicesEntity(final List<ServiceFromServiceBundle> serviceFromServicePersonalAccounts) {
+    private List<ServiceFromServiceBundle> convertListOfServicesEntityToListOfServices(final List<ServiceFromServiceBundleEntity> serviceFromServicePersonalAccounts) {
         return serviceFromServicePersonalAccounts.stream().map(serviceEntityToServiceMapper::convert).collect(Collectors.toList());
     }
 

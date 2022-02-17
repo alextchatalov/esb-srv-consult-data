@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Lazy
 @Component
 @AllArgsConstructor
-public class DataToDataEntityMapper implements Converter<DataEntity, Data> {
+public class DataEntityToDataMapper implements Converter<DataEntity, Data> {
 
     private final CompanyEntityToCompanyMapper companyEntityToCompanyMapper;
 
