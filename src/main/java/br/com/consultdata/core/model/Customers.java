@@ -1,20 +1,21 @@
 package br.com.consultdata.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldNameConstants;
 
-// import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
-// import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
-/* ObjectMapper om = new ObjectMapper();
-Root root = om.readValue(myJsonString), Root.class); */
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@FieldNameConstants
+@EqualsAndHashCode
+@ToString
 public class Customers {
-    @JsonProperty("rate")
-    public String getRate() {
-        return this.rate;
-    }
 
-    public void setRate(String rate) {
-        this.rate = rate;
-    }
-
-    String rate;
+    private String rate;
 }

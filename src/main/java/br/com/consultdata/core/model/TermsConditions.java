@@ -1,38 +1,24 @@
 package br.com.consultdata.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldNameConstants;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@FieldNameConstants
+@EqualsAndHashCode
+@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TermsConditions {
-    @JsonProperty("minimumBalance")
-    public MinimumBalance getMinimumBalance() {
-        return this.minimumBalance;
-    }
-
-    public void setMinimumBalance(MinimumBalance minimumBalance) {
-        this.minimumBalance = minimumBalance;
-    }
-
-    MinimumBalance minimumBalance;
-
-    @JsonProperty("elegibilityCriteriaInfo")
-    public String getElegibilityCriteriaInfo() {
-        return this.elegibilityCriteriaInfo;
-    }
-
-    public void setElegibilityCriteriaInfo(String elegibilityCriteriaInfo) {
-        this.elegibilityCriteriaInfo = elegibilityCriteriaInfo;
-    }
-
-    String elegibilityCriteriaInfo;
-
-    @JsonProperty("closingProcessInfo")
-    public String getClosingProcessInfo() {
-        return this.closingProcessInfo;
-    }
-
-    public void setClosingProcessInfo(String closingProcessInfo) {
-        this.closingProcessInfo = closingProcessInfo;
-    }
-
-    String closingProcessInfo;
+    private MinimumBalance minimumBalance;
+    private String elegibilityCriteriaInfo;
+    private String closingProcessInfo;
 }

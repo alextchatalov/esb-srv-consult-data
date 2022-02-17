@@ -1,20 +1,25 @@
 package br.com.consultdata.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldNameConstants;
 
 import java.util.List;
 
-public class Brand{
-    @JsonProperty("name")
-    public String getName() {
-        return this.name; }
-    public void setName(String name) {
-        this.name = name; }
-    String name;
-    @JsonProperty("companies")
-    public List<Company> getCompanies() {
-        return this.companies; }
-    public void setCompanies(List<Company> companies) {
-        this.companies = companies; }
-    List<Company> companies;
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@FieldNameConstants
+@EqualsAndHashCode
+@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Brand {
+    private String name;
+    private List<Company> companies;
 }

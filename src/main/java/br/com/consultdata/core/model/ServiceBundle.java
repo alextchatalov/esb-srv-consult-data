@@ -1,62 +1,28 @@
 package br.com.consultdata.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.FieldNameConstants;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@FieldNameConstants
+@EqualsAndHashCode
+@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceBundle {
-    @JsonProperty("name")
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    String name;
-
-    @JsonProperty("services")
-    public List<Service> getServices() {
-        return this.services;
-    }
-
-    public void setServices(List<Service> services) {
-        this.services = services;
-    }
-
-    List<Service> services;
-
-    @JsonProperty("prices")
-    public List<Price> getPrices() {
-        return this.prices;
-    }
-
-    public void setPrices(List<Price> prices) {
-        this.prices = prices;
-    }
-
-    List<Price> prices;
-
-    @JsonProperty("minimum")
-    public Minimum getMinimum() {
-        return this.minimum;
-    }
-
-    public void setMinimum(Minimum minimum) {
-        this.minimum = minimum;
-    }
-
-    Minimum minimum;
-
-    @JsonProperty("maximum")
-    public Maximum getMaximum() {
-        return this.maximum;
-    }
-
-    public void setMaximum(Maximum maximum) {
-        this.maximum = maximum;
-    }
-
-    Maximum maximum;
+    private String name;
+    private List<ServiceFromServiceBundle> services;
+    private List<Price> prices;
+    private Minimum minimum;
+    private Maximum maximum;
 }

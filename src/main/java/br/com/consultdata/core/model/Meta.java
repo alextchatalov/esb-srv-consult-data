@@ -1,27 +1,17 @@
 package br.com.consultdata.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldNameConstants;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+@FieldNameConstants
 public class Meta {
-    @JsonProperty("totalRecords")
-    public int getTotalRecords() {
-        return this.totalRecords;
-    }
-
-    public void setTotalRecords(int totalRecords) {
-        this.totalRecords = totalRecords;
-    }
-
-    int totalRecords;
-
-    @JsonProperty("totalPages")
-    public int getTotalPages() {
-        return this.totalPages;
-    }
-
-    public void setTotalPages(int totalPages) {
-        this.totalPages = totalPages;
-    }
-
-    int totalPages;
+    private int totalRecords;
+    private int totalPages;
 }
