@@ -1,6 +1,5 @@
 package br.com.consultdata.entrypoint.resource;
 
-import br.com.consultdata.entrypoint.model.Bank;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,9 +17,7 @@ public class ResponseResource {
 
 
     @GetMapping("/perssonal-accounts")
-    public List<Bank> getPessonalAccounts() {
-
-
+    public String get() {
         return null;
     }
 }
