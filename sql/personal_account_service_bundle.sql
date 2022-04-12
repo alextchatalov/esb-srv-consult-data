@@ -1,4 +1,4 @@
-select distinct company.name, personal.type, minimum.value::DECIMAL as minimum , minimum.currency ,maximum.value::DECIMAL as maximum, maximum.currency
+select distinct company.name as name, personal.type as type, minimum.value::DECIMAL as minimum , minimum.currency as minimum_currency ,maximum.value::DECIMAL as maximum, maximum.currency as maximum_currency
 from data
 inner join brand on brand.data_id = data.id
 inner join company on company.brand_id = brand.id
@@ -9,4 +9,5 @@ inner join maximum on maximum.service_bundle_id = service.id
 where minimum.value <> 'NA'
 and maximum.value <> 'NA'
 and personal.type = 'CONTA_DEPOSITO_A_VISTA'
-order by maximum desc
+order by maximum asc
+FETCH FIRST 5 ROWS ONLY
