@@ -10,7 +10,13 @@ import java.util.List;
 public interface PersonalAccountRepository extends JpaRepository<DataEntity, String> {
 
     @Query(value = "" +
-            "select distinct company.name as name, personal.type as type, CAST(minimum.value as DECIMAL) as minimum , minimum.currency as minimumCurrency , CAST(maximum.value as DECIMAL) as maximum, maximum.currency as maximumCurrency\n" +
+            "select distinct company.name as name, \n" +
+            "personal.type as type, \n" +
+            "CAST(minimum.value as DECIMAL) as minimum \n" +
+            ", minimum.currency as minimumCurrency , \n" +
+            "CAST(maximum.value as DECIMAL) as maximum, \n" +
+            "maximum.currency as maximumCurrency, \n" +
+            "participant.customer_friendly_logo_uri as customerFriendlyLogoUri\n" +
             "from data\n" +
             "inner join brand on brand.data_id = data.id\n" +
             "inner join company on company.brand_id = brand.id\n" +
@@ -18,6 +24,7 @@ public interface PersonalAccountRepository extends JpaRepository<DataEntity, Str
             "inner join service_bundle service on service.personal_account_id = personal.id\n" +
             "inner join minimum on minimum.service_bundle_id = service.id\n" +
             "inner join maximum on maximum.service_bundle_id = service.id\n" +
+            "inner join participant on participant.organisation_id = brand.participant_organisation_id\n" +
             "where minimum.value <> 'NA'\n" +
             "and maximum.value <> 'NA'\n" +
             "and personal.type = ?1\n" +

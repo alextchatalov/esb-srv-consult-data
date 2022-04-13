@@ -10,4 +10,6 @@ public interface ProjectionPersonalAccountServiceBundle {
     BigDecimal getMaximum();
     String getMaximumCurrency();
 
+    String getCustomerFriendlyLogoUri();
+
 }

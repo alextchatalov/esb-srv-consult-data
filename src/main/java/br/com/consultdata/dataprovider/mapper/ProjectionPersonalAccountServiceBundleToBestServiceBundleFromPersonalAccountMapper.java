@@ -20,6 +20,7 @@ public class ProjectionPersonalAccountServiceBundleToBestServiceBundleFromPerson
                 .minimumCurrency(projection.getMinimumCurrency())
                 .maximum(projection.getMaximum())
                 .maximumCurrency(projection.getMaximumCurrency())
+                .customerFriendlyLogoUri(projection.getCustomerFriendlyLogoUri())
                 .build();
     }
 

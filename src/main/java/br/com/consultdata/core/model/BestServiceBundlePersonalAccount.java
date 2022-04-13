@@ -25,4 +25,5 @@ public class BestServiceBundlePersonalAccount {
     private String minimumCurrency;
     private BigDecimal maximum;
     private String maximumCurrency;
+    private String customerFriendlyLogoUri;
 }

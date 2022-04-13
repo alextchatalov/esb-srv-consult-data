@@ -20,6 +20,7 @@ public class BestServiceBundleFromPersonalAccountToBestServiceBundleFromPersonal
                 .minimumCurrency(bestServiceBundlePersonalAccount.getMinimumCurrency())
                 .maximum(bestServiceBundlePersonalAccount.getMaximum())
                 .maximumCurrency(bestServiceBundlePersonalAccount.getMaximumCurrency())
+                .customerFriendlyLogoUri(bestServiceBundlePersonalAccount.getCustomerFriendlyLogoUri())
                 .build();
     }
 
