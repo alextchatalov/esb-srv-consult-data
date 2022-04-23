@@ -1,5 +1,6 @@
 package br.com.consultdata.dataprovider.repository;
 
+import br.com.consultdata.core.model.TypeAccount;
 import br.com.consultdata.dataprovider.entity.DataEntity;
 import br.com.consultdata.dataprovider.projections.ProjectionPersonalAccountServiceBundle;
 import org.springframework.data.jpa.repository.JpaRepository;

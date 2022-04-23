@@ -1,6 +1,7 @@
 package br.com.consultdata.core.usecase;
 
 import br.com.consultdata.core.model.BestServiceBundlePersonalAccount;
+import br.com.consultdata.core.model.TypeAccount;
 
 import java.util.List;
 

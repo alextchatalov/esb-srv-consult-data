@@ -1,6 +1,7 @@
 package br.com.consultdata.dataprovider.gateway;
 
 import br.com.consultdata.core.model.BestServiceBundlePersonalAccount;
+import br.com.consultdata.core.model.TypeAccount;
 import br.com.consultdata.core.usecase.FindBestServiceBundleFromPersonalAccountByTypeBoundary;
 import br.com.consultdata.dataprovider.mapper.ProjectionPersonalAccountServiceBundleToBestServiceBundleFromPersonalAccountMapper;
 import br.com.consultdata.dataprovider.projections.ProjectionPersonalAccountServiceBundle;
@@ -19,7 +20,7 @@ public class FindBestServiceBundleFromPersonalAccountByTypeGateway implements Fi
     private final PersonalAccountRepository repository;
 
     @Override
-    public List<BestServiceBundlePersonalAccount> execute(String type) {
+    public List<BestServiceBundlePersonalAccount> execute(final String type) {
         List<ProjectionPersonalAccountServiceBundle> result = repository.findBestServiceBundleFromPersonalAccountsByType(type);
 
         if (result == null || result.isEmpty()) {

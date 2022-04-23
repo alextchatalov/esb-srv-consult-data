@@ -1,6 +1,7 @@
 package br.com.consultdata.entrypoint.resource;
 
 import br.com.consultdata.core.model.BestServiceBundlePersonalAccount;
+import br.com.consultdata.core.model.TypeAccount;
 import br.com.consultdata.core.usecase.FindBestServiceBundleFromPersonalAccountUserCase;
 import br.com.consultdata.entrypoint.mapper.BestServiceBundleFromPersonalAccountToBestServiceBundleFromPersonalAccountResponseMapper;
 import br.com.consultdata.entrypoint.response.BestServiceBundleFromPersonalAccountResponse;
@@ -26,7 +27,7 @@ public class PersonalAccountResource {
     private final FindBestServiceBundleFromPersonalAccountUserCase findBestServiceBundleFromPersonalAccountUserCase;
 
     @GetMapping("/best/service-bundle")
-    public ResponseEntity<List<BestServiceBundleFromPersonalAccountResponse>> getBestServiceBundleFromPersonalAccount(@RequestParam("type") final String type) {
+    public ResponseEntity<List<BestServiceBundleFromPersonalAccountResponse>> getBestServiceBundleFromPersonalAccount(@RequestParam("type") final TypeAccount type) {
 
         final List<BestServiceBundlePersonalAccount> bestServiceBundlePersonalAccounts = findBestServiceBundleFromPersonalAccountUserCase.execute(type);
         final List<BestServiceBundleFromPersonalAccountResponse> result = bestServiceBundlePersonalAccounts.stream().map(BestServiceBundleFromPersonalAccountToBestServiceBundleFromPersonalAccountResponseMapper::convert).collect(Collectors.toList());
