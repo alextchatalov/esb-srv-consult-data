@@ -27,7 +27,7 @@ public class PersonalAccountResource {
     private final FindBestServiceBundleFromPersonalAccountUserCase findBestServiceBundleFromPersonalAccountUserCase;
 
     @GetMapping("/best/service-bundle")
-    public ResponseEntity<List<BestServiceBundleFromPersonalAccountResponse>> getBestServiceBundleFromPersonalAccount(@RequestParam("type") final TypeAccount type) {
+    public ResponseEntity<List<BestServiceBundleFromPersonalAccountResponse>> getBestServiceBundleFromPersonalAccount(@RequestParam("typeAccount") final TypeAccount type) {
 
         final List<BestServiceBundlePersonalAccount> bestServiceBundlePersonalAccounts = findBestServiceBundleFromPersonalAccountUserCase.execute(type);
         final List<BestServiceBundleFromPersonalAccountResponse> result = bestServiceBundlePersonalAccounts.stream().map(BestServiceBundleFromPersonalAccountToBestServiceBundleFromPersonalAccountResponseMapper::convert).collect(Collectors.toList());
