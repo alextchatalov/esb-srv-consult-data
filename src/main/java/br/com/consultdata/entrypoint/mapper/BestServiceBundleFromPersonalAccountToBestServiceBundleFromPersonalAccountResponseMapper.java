@@ -14,13 +14,11 @@ public class BestServiceBundleFromPersonalAccountToBestServiceBundleFromPersonal
     public static BestServiceBundleFromPersonalAccountResponse convert(final BestServiceBundlePersonalAccount bestServiceBundlePersonalAccount) {
 
         return BestServiceBundleFromPersonalAccountResponse.builder()
-                .name(bestServiceBundlePersonalAccount.getName())
-                .type(bestServiceBundlePersonalAccount.getType())
-                .minimum(bestServiceBundlePersonalAccount.getMinimum())
-                .minimumCurrency(bestServiceBundlePersonalAccount.getMinimumCurrency())
-                .maximum(bestServiceBundlePersonalAccount.getMaximum())
-                .maximumCurrency(bestServiceBundlePersonalAccount.getMaximumCurrency())
+                .bank(bestServiceBundlePersonalAccount.getBank())
+                .bundleName(bestServiceBundlePersonalAccount.getBundleName())
                 .customerFriendlyLogoUri(bestServiceBundlePersonalAccount.getCustomerFriendlyLogoUri())
+                .minimum(bestServiceBundlePersonalAccount.getMinimum())
+                .maximum(bestServiceBundlePersonalAccount.getMaximum())
                 .build();
     }
 

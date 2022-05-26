@@ -1,4 +1,4 @@
-package br.com.consultdata.dataprovider;
+package br.com.consultdata.dataprovider.repository;
 
 import br.com.consultdata.dataprovider.entity.DataEntity;
 import br.com.consultdata.dataprovider.projections.ProjectionBusinessAccountServiceBundle;

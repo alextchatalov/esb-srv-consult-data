@@ -2,9 +2,9 @@ package br.com.consultdata.dataprovider.gateway;
 
 import br.com.consultdata.core.model.BestServiceBundleBusinessAccount;
 import br.com.consultdata.core.usecase.FindBestServiceBundleFromBusinessAccountByTypeBoundary;
-import br.com.consultdata.dataprovider.BusinessAccountRepository;
 import br.com.consultdata.dataprovider.mapper.ProjectionBusinessAccountServiceBundleToBestServiceBundleFromBusinessAccountMapper;
 import br.com.consultdata.dataprovider.projections.ProjectionBusinessAccountServiceBundle;
+import br.com.consultdata.dataprovider.repository.BusinessAccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
