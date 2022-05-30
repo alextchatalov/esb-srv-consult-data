@@ -14,13 +14,11 @@ public class ProjectionBusinessAccountServiceBundleToBestServiceBundleFromBusine
     public static BestServiceBundleBusinessAccount convert(final ProjectionBusinessAccountServiceBundle projection) {
 
         return BestServiceBundleBusinessAccount.builder()
-                .name(projection.getName())
-                .type(projection.getType())
-                .minimum(projection.getMinimum())
-                .minimumCurrency(projection.getMinimumCurrency())
-                .maximum(projection.getMaximum())
-                .maximumCurrency(projection.getMaximumCurrency())
+                .bank(projection.getBank())
+                .bundleName(projection.getBundleName())
                 .customerFriendlyLogoUri(projection.getCustomerFriendlyLogoUri())
+                .minimum(projection.getMinimum())
+                .maximum(projection.getMaximum())
                 .build();
     }
 

@@ -20,11 +20,9 @@ import java.math.BigDecimal;
 @ToString
 public class BestServiceBundleFromBusinessAccountResponse {
 
-    private String name;
-    private String type;
-    private BigDecimal minimum;
-    private String minimumCurrency;
-    private BigDecimal maximum;
-    private String maximumCurrency;
+    private String bank;
+    private String bundleName;
     private String customerFriendlyLogoUri;
+    private BigDecimal minimum;
+    private BigDecimal maximum;
 }

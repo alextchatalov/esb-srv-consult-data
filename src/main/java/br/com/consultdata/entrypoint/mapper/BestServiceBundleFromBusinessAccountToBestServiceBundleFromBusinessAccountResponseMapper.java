@@ -14,13 +14,11 @@ public class BestServiceBundleFromBusinessAccountToBestServiceBundleFromBusiness
     public static BestServiceBundleFromBusinessAccountResponse convert(final BestServiceBundleBusinessAccount bestServiceBundleBusinessAccount) {
 
         return BestServiceBundleFromBusinessAccountResponse.builder()
-                .name(bestServiceBundleBusinessAccount.getName())
-                .type(bestServiceBundleBusinessAccount.getType())
-                .minimum(bestServiceBundleBusinessAccount.getMinimum())
-                .minimumCurrency(bestServiceBundleBusinessAccount.getMinimumCurrency())
-                .maximum(bestServiceBundleBusinessAccount.getMaximum())
-                .maximumCurrency(bestServiceBundleBusinessAccount.getMaximumCurrency())
+                .bank(bestServiceBundleBusinessAccount.getBank())
+                .bundleName(bestServiceBundleBusinessAccount.getBundleName())
                 .customerFriendlyLogoUri(bestServiceBundleBusinessAccount.getCustomerFriendlyLogoUri())
+                .minimum(bestServiceBundleBusinessAccount.getMinimum())
+                .maximum(bestServiceBundleBusinessAccount.getMaximum())
                 .build();
     }
 
