@@ -1,8 +1,7 @@
 package br.com.consultdata.core.usecase;
 
-import br.com.consultdata.core.model.BestServiceBundlePersonalAccount;
-import br.com.consultdata.core.model.Type;
-import br.com.consultdata.core.model.TypeAccount;
+import br.com.consultdata.core.model.AccountModel;
+import br.com.consultdata.core.model.BestServiceBundleAccount;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -16,7 +15,7 @@ public class FindBestServiceBundleFromPersonalAccountUserCase {
 
     private FindBestServiceBundleFromPersonalAccountByTypeBoundary findBestServiceBundleFromPersonalAccountByTypeBoundary;
 
-    public List<BestServiceBundlePersonalAccount> execute(final TypeAccount type) {
-        return findBestServiceBundleFromPersonalAccountByTypeBoundary.execute(type.name());
+    public List<BestServiceBundleAccount> execute(final AccountModel accountModel) {
+        return findBestServiceBundleFromPersonalAccountByTypeBoundary.execute(accountModel.name());
     }
 }

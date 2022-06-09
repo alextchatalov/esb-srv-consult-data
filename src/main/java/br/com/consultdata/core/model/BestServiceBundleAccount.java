@@ -1,5 +1,4 @@
-package br.com.consultdata.entrypoint.response;
-
+package br.com.consultdata.core.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +17,7 @@ import java.math.BigDecimal;
 @FieldNameConstants
 @EqualsAndHashCode
 @ToString
-public class BestServiceBundleFromPersonalAccountResponse {
+public class BestServiceBundleAccount {
 
     private String bank;
     private String bundleName;

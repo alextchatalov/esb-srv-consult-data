@@ -2,7 +2,7 @@ package br.com.consultdata.dataprovider.projections;
 
 import java.math.BigDecimal;
 
-public interface ProjectionBusinessAccountServiceBundle {
+public interface ProjectionAccountServiceBundle {
     String getBank();
 
     String getBundleName();
@@ -12,5 +12,5 @@ public interface ProjectionBusinessAccountServiceBundle {
     BigDecimal getMinimum();
 
     BigDecimal getMaximum();
-
+    
 }

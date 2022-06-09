@@ -1,0 +1,19 @@
+type BestServiceBundleAccount {
+    bank: String,
+    bundleName: String,
+    customerFriendlyLogoUri: String,
+    minimum: Float
+    maximum: Float
+}
+
+enum AccountModel {
+    CONTA_DEPOSITO_A_VISTA,
+    CONTA_POUPANCA,
+    CONTA_PAGAMENTO_PRE_PAGA,
+    CONTA_PAGAMENTO
+}
+
+enum TypeAccount {
+    PERSONAL,
+    BUSINESS
+}

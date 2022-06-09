@@ -1,7 +1,7 @@
 package br.com.consultdata.dataprovider.repository;
 
 import br.com.consultdata.dataprovider.entity.DataEntity;
-import br.com.consultdata.dataprovider.projections.ProjectionPersonalAccountServiceBundle;
+import br.com.consultdata.dataprovider.projections.ProjectionAccountServiceBundle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -31,5 +31,5 @@ public interface PersonalAccountRepository extends JpaRepository<DataEntity, Str
             "ORDER BY maximum\n" +
             "FETCH FIRST 5 ROWS ONLY"
             , nativeQuery = true)
-    List<ProjectionPersonalAccountServiceBundle> findBestServiceBundleFromPersonalAccountsByType(String type);
+    List<ProjectionAccountServiceBundle> findBestServiceBundleFromPersonalAccountsByType(String type);
 }

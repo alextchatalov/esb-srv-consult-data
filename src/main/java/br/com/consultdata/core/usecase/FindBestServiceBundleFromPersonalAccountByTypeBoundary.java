@@ -1,11 +1,10 @@
 package br.com.consultdata.core.usecase;
 
-import br.com.consultdata.core.model.BestServiceBundlePersonalAccount;
-import br.com.consultdata.core.model.TypeAccount;
+import br.com.consultdata.core.model.BestServiceBundleAccount;
 
 import java.util.List;
 
 public interface FindBestServiceBundleFromPersonalAccountByTypeBoundary {
 
-    List<BestServiceBundlePersonalAccount> execute(String type);
+    List<BestServiceBundleAccount> execute(String type);
 }
