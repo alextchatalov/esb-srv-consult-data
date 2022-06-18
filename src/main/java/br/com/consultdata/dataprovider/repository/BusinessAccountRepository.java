@@ -13,7 +13,8 @@ public interface BusinessAccountRepository extends JpaRepository<DataEntity, Str
             "       service.name AS bundleName,\n" +
             "       participant.customer_friendly_logo_uri AS customerFriendlyLogoUri,\n" +
             "       SUM (CAST(minimum.value AS DECIMAL)) AS minimum,\n" +
-            "       SUM(CAST(maximum.value AS DECIMAL)) AS maximum\n" +
+            "       SUM(CAST(maximum.value AS DECIMAL)) AS maximum,\n" +
+            "       bundle.id as id\n" +
             "FROM DATA\n" +
             "INNER JOIN brand ON brand.data_id = data.id\n" +
             "inner join company on brand.id = company.brand_id\n" +
@@ -28,9 +29,11 @@ public interface BusinessAccountRepository extends JpaRepository<DataEntity, Str
             "WHERE minimum.value <> 'NA'\n" +
             "  AND maximum.value <> 'NA'\n" +
             "  AND service.name <> 'NA'\n" +
+            "  AND business.type = ?1\n" +
             "GROUP BY participant.customer_friendly_name,\n" +
             "         service.name,\n" +
-            "         customerFriendlyLogoUri\n" +
+            "         customerFriendlyLogoUri,\n" +
+            "         business.id\n" +
             "ORDER BY maximum\n" +
             "FETCH FIRST 5 ROWS ONLY"
             , nativeQuery = true)

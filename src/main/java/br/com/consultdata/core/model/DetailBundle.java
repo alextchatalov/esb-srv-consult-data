@@ -1,5 +1,6 @@
 package br.com.consultdata.core.model;
 
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -8,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.FieldNameConstants;
 
-import java.math.BigDecimal;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -17,12 +16,13 @@ import java.math.BigDecimal;
 @FieldNameConstants
 @EqualsAndHashCode
 @ToString
-public class BestServiceBundleAccount {
+public class DetailBundle {
 
-    private String bank;
-    private String bundleName;
-    private String customerFriendlyLogoUri;
+    private String bundle;
+    private String code;
+    private String info;
+    private int eventLimit;
+    private int freeLimit;
     private BigDecimal minimum;
     private BigDecimal maximum;
-    private Long id;
 }

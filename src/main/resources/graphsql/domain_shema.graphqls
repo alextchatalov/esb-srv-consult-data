@@ -2,7 +2,18 @@ type BestServiceBundleAccount {
     bank: String,
     bundleName: String,
     customerFriendlyLogoUri: String,
-    minimum: Float
+    minimum: Float,
+    maximum: Float,
+    id: String
+}
+
+type DetailBundle {
+    bundle: String,
+    code: String,
+    info: String,
+    eventLimit: Int,
+    freeLimit: Int,
+    minimum: Float,
     maximum: Float
 }
 

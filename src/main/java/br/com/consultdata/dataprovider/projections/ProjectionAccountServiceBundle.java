@@ -12,5 +12,7 @@ public interface ProjectionAccountServiceBundle {
     BigDecimal getMinimum();
 
     BigDecimal getMaximum();
+
+    Long getId();
     
 }

@@ -19,6 +19,7 @@ public class ProjectionAccountServiceBundleToBestServiceBundleFromAccountMapper 
                 .customerFriendlyLogoUri(projection.getCustomerFriendlyLogoUri())
                 .minimum(projection.getMinimum())
                 .maximum(projection.getMaximum())
+                .id(projection.getId())
                 .build();
     }
 
