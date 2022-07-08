@@ -1,4 +1,5 @@
 type Query {
     getBestTopFiveBundleFromAccount(type: TypeAccount, accountModel: AccountModel): [BestServiceBundleAccount]
     getDetailBundle(bundleId: Int): [DetailBundle]
+    getBestTopFiveLoans(type: TypeAccount, loaModel: LoanModel): [BestLoan]
 }

@@ -1,0 +1,54 @@
+type BestServiceBundleAccount {
+    bank: String,
+    bundleName: String,
+    customerFriendlyLogoUri: String,
+    minimum: Float,
+    maximum: Float,
+    id: String
+}
+
+type BestLoan {
+    bank: String,
+    company: String,
+    customerFriendlyLogoUri: String,
+    minimum: Float,
+    maximum: Float,
+    rateId: Float,
+    rate: Float
+}
+
+type DetailBundle {
+    bundle: String,
+    code: String,
+    info: String,
+    eventLimit: Int,
+    freeLimit: Int,
+    minimum: Float,
+    maximum: Float
+}
+
+enum AccountModel {
+    CONTA_DEPOSITO_A_VISTA,
+    CONTA_POUPANCA,
+    CONTA_PAGAMENTO_PRE_PAGA,
+    CONTA_PAGAMENTO
+}
+
+enum LoanModel {
+    EMPRESTIMO_MICROCREDITO_PRODUTIVO_ORIENTADO,
+    EMPRESTIMO_CHEQUE_ESPECIAL,
+    EMPRESTIMO_CONTA_GARANTIDA,
+    EMPRESTIMO_CAPITAL_GIRO_PRAZO_VENCIMENTO_ATE_365_DIAS,
+    EMPRESTIMO_CAPITAL_GIRO_PRAZO_VENCIMENTO_SUPERIOR_365_DIAS,
+    EMPRESTIMO_CAPITAL_GIRO_ROTATIVO,
+    EMPRESTIMO_CREDITO_PESSOAL_CONSIGNADO,
+    EMPRESTIMO_CREDITO_PESSOAL_SEM_CONSIGNACAO,
+    EMPRESTIMO_HOME_EQUITY,
+    EMPRESTIMO_CAPITAL_DE_GIRO_PESSOA_UNICA,
+    CHEQUE_EMPRESARIAL_PJ,
+}
+
+enum TypeAccount {
+    PERSONAL,
+    BUSINESS
+}

@@ -4,7 +4,7 @@ import br.com.consultdata.core.model.DetailBundle;
 import br.com.consultdata.core.usecase.GetDetailBundleBoundary;
 import br.com.consultdata.dataprovider.mapper.ProjectionDetailBundleToDetailBundleMapper;
 import br.com.consultdata.dataprovider.projections.ProjectionDetailBundle;
-import br.com.consultdata.dataprovider.repository.PersonalAccountRepository;
+import br.com.consultdata.dataprovider.repository.AccountRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class GetDetailBundleGateway implements GetDetailBundleBoundary {
 
-    private final PersonalAccountRepository repository;
+    private final AccountRepository repository;
 
     @Override
     public List<DetailBundle> execute(Long bundleId) {

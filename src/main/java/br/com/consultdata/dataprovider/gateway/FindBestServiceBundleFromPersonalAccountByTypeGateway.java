@@ -4,7 +4,7 @@ import br.com.consultdata.core.model.BestServiceBundleAccount;
 import br.com.consultdata.core.usecase.FindBestServiceBundleFromPersonalAccountByTypeBoundary;
 import br.com.consultdata.dataprovider.mapper.ProjectionAccountServiceBundleToBestServiceBundleFromAccountMapper;
 import br.com.consultdata.dataprovider.projections.ProjectionAccountServiceBundle;
-import br.com.consultdata.dataprovider.repository.PersonalAccountRepository;
+import br.com.consultdata.dataprovider.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FindBestServiceBundleFromPersonalAccountByTypeGateway implements FindBestServiceBundleFromPersonalAccountByTypeBoundary {
 
-    private final PersonalAccountRepository repository;
+    private final AccountRepository repository;
 
     @Override
     public List<BestServiceBundleAccount> execute(final String type) {
-        List<ProjectionAccountServiceBundle> result = repository.findBestServiceBundleFromPersonalAccountsByType(type);
+        List<ProjectionAccountServiceBundle> result = repository.findTopFiveBestPersonalAccountService(type);
 
         if (result == null || result.isEmpty()) {
             return new ArrayList<>();
